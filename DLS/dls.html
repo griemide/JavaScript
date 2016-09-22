@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+    <head>
+        <title>DLS Auftragsdaten CSV</title>
+    </head>
+    <body>
+    <input type="file" name="file" id="file">
+    <script type="text/javascript">
+        document.getElementById('file').onchange = function(){
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onload = function(progressEvent){
+                // Entire file
+                console.log(this.result);
+                // By lines
+                var line01 = [];
+                var line02 = [];
+                var line03 = [];
+                // assuming 3 lines
+                var lines = this.result.split('\n');
+                lines.map(function(item){
+                    var tabs = item.split('\t');
+                    console.log(
+					"\n 1", "OrderNo                 :", tabs[0], 
+					"\n 2", "Factory                 :", tabs[1],
+					"\n 3", "MaterialNo              :", tabs[2],
+					"\n 4", "MaterialText            :", tabs[3],
+					"\n 5", "TotalCount              :", tabs[4],
+					"\n 6", "Version                 :", tabs[5],
+					"\n 7", "Lot                     :", tabs[6],
+					"\n 8", "CustomerLot             :", tabs[7],
+					"\n 9", "FormatManufacturingDate :", tabs[8],
+					"\n10", "FormatExpiryDate        :", tabs[9],
+					"\n11", "LabelsPerReel           :", tabs[10],
+					"\n12", "RawMaterial             :", tabs[11],
+					"\n13", "LabelType               :", tabs[12],
+					"\n14", "Pharmacode              :", tabs[13],
+					"\n15", "EANCode                 :", tabs[14],
+					"\n16", "DataMatrixPrint         :", tabs[15],
+					"\n17", "ManufacturingDate       :", tabs[16],
+					"\n18", "ExpiryDate              :", tabs[17],
+					"\n19", "PackingOrder            :", tabs[18],
+					"\n20", "RegulatoryUnit          :", tabs[19],
+					"\n21", "TrackAndTraceRelevance  :", tabs[20],
+					"\n22", "                        :", tabs[21],
+					"\n23", "                        :", tabs[22]
+					);
+                    //line01.push(tabs[0]);
+                    //line02.push(tabs[1]);
+                    //line03.push(tabs[2]);
+                    }
+                );
+                // test two of the arrays after reading:
+                // for (var i = 0; i < 3; i++) {
+                //    console.log(line01[i], line02[i]);
+                // };
+            };
+            reader.readAsText(file);
+        };
+    </script>
+    </body>
+</html>
+ 
