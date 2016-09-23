@@ -18,5 +18,5 @@ Spalte	Symbol                 	Definition
 17	ManufacturingDate       :	HSDAT,CHAR8,Herstelldatumfür DM,VARCHAR,^.*$
 18	ExpiryDate              :	VFDAT,CHAR8,VerfalldatumFür DM,VARCHAR,^.*$
 19	PackingOrder            :	ZZ_LINKORD,CHAR12,PRAUF-Nr. für Verpackung,VARCHAR,^.*$
-20	RegulatoryUnit	        :	REGUNIT,CHAR4,Regulatorische Mengeneinheit,VARCHAR,^10|20|30|40|50|na$
+20	RegulatoryUnit          :	REGUNIT,CHAR4,Regulatorische Mengeneinheit,VARCHAR,^10|20|30|40|50|na$
 21	TrackAndTraceRelevance  :	xxxx,CHAR4,Track and Trace Relevanz,VARCHAR,^[0-3]{1}$
