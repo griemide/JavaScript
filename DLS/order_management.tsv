@@ -1,4 +1,4 @@
-Spalte	Symbol	                 	Definition
+Spalte	Symbol                 	Definition
  1	OrderNo                 :	AUFNR,CHAR12,PRAUF-Nr. für dascEtikett,VARCHAR,^[0-9]+$
  2	Factory                 :	WERKS,CHAR4,Produktionswerk,VARCHAR,^DE13|DE09|DE53
  3	MaterialNo              :	MATNR,CHAR18,Materialnummer Etikett,VARCHAR,^.+$
