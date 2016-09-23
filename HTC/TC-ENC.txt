@@ -1,0 +1,14 @@
+﻿TC[1][1] = 'Tamper P0'; // DVT2
+TC[1][16] = 'Hi Freq Monitor'; // DVT2
+TC[1][17] = 'Lo Freq Mnitor'; // DVT2
+TC[1][18] = 'Hi Volt Monitor'; // DVT2
+TC[1][19] = 'Lo Volt Monitor'; // DVT2
+TC[1][20] = 'Hi Temp Monitor'; // DVT2
+TC[1][21] = 'Lo Temp Monitor'; // DVT2
+TC[1][22] = 'Rate-of-Change Temp'; // DVT2
+TC[1][23] = 'Internal Grid Fault'; // DVT2
+TC[1][24] = 'Internal Grid Open'; // DVT2
+TC[1][25] = 'External Grid Fault'; // DVT2
+TC[1][26] = 'External Grid Open'; // DVT2
+TC[1][27] = 'Clock Glitch Monitor'; // DVT2
+TC[1][31] = 'TST_SWDEV_BOOT'; // DVT2

@@ -1,0 +1,144 @@
+﻿// script language="javascript" type="text/javascript" 
+// (c)2012, Michael W. Gries
+// creation date: 2012-05-28
+// last modified: 2012-06-22
+
+var DEBUG = false;
+var iValue;
+var bSecure = false;
+
+// 2012-05-28
+function getTamperCode() {
+    iValue = document.all.inputCode.value;
+    if (iValue == "") {
+        document.all.inputCode.value = "0xb2000780";
+        iValue = document.all.inputCode.value;
+    }
+    encodedTamperCode();  // (BBL_tamper_Enc_Src register)
+    decodeTamperStatus(); // (BBL_Tamper_Status Rgister)
+    activateCodeEntry();
+    if (bSecure) getContactCode();
+}
+
+// 2012-06-01
+function encodedTamperCode() {
+    var eTitleText = "earliest tamper event"
+    var TC = new Array();
+    TC[1] = new Object();
+    <!--#include virtual="TC-ENC.txt"-->
+    var eMask = 0x40; // if bit 7 true than event valid 
+    var hMask = 0x1F; // 5 bit coding (BBL_tamper_Enc_Src register)
+    var eCode = iValue >> 25; //bit 25-29 used
+    eCode = eCode & eMask;
+    var hCode = (iValue >> 25) & hMask;
+    var sAlertText;
+    sAlertText = iValue + " >> 0x" + eCode.toString(16) + " >> 0x" + hCode.toString(16);
+    if (eCode != 0) {
+        // alert(sAlertText);
+        var eTitle = document.createTextNode(eTitleText);
+        document.getElementById("Encode").appendChild(eTitle);
+        var eValue = document.createTextNode(TC[1][hCode] + " ");
+        document.getElementById("EncHex").appendChild(eValue);
+    }
+}
+
+// 2012-05-29
+function decodeTamperStatus() {
+    var TC = new Array();
+    TC[5000] = new Object();
+    <!--#include virtual="TC.txt"-->
+    //var sC2 = document.createElement("TD");
+    //var sCB = 'checkbox';
+    //var parentElement = "Decode";
+    //var childElement = "C0";
+
+    var iMask = 1; //start with LSB
+    for (var i = 0; i <= 22; i++) {
+        var iCode = iValue & iMask;
+        var noteC1 = document.createTextNode(".");
+        if (iCode != 0) {
+            if (DEBUG) {
+                var noteC1 = document.createTextNode(iMask + ":" + TC[5000][iMask] + ", ");
+            } else {
+                //var noteC1 = document.createTextNode(TC[5000][iMask] + ", ");
+                var noteC1 = document.createTextNode(TC[5000][iMask] + " ");
+                //document.all.iPWD.setAttribute("type", "password", 0);
+            } 
+        } 
+        divElement = "Div"+ i;
+        document.getElementById(divElement).appendChild(noteC1);
+        //alert(divElement+":"+noteC1);
+        //var Knoten = document.getElementsByTagName(divElement)[0].firstChild;
+        //verschwunden = document.getElementsByTagName(divElement)[0].removeChild(Knoten);
+        //cloneElement = document.getElementById(parentElement).cloneNode(true);
+        //document.getElementById(parentElement).firstChild.nodeValue += cloneElement.firstChild.nodeValue;
+        //var sCE = document.createElement(childElement);
+        //sCE.appendChild(noteC1);
+        //document.getElementById(parentElement).appendChild(sCE);
+        //parentElement = childElement;
+        //sC2.appendChild(noteC1);
+        //document.getElementById("Decode").appendChild(sC2);
+        iMask = iMask << 1;
+    }
+    var dTitle = document.createTextNode("decoded Tamper Codes"); // (BBL_Tamper_Status Rgister)
+    document.getElementById("Decode").appendChild(dTitle);
+    var noteC2 = document.createTextNode(document.all.inputCode.value);
+    var aTitle = document.createAttribute("title");
+    aTitle.nodeValue = 'decoded value';
+    //document.getElementsById("Decode")[1].setAttributeNode(aTitle);
+    //document.getElementsById("Decode").title = sCB;
+}
+
+// 2012-05-29
+function clearTamperCode() {
+    //alert(document.referrer);
+    location.reload();
+}
+
+
+// 2012-06-03
+function getContactCode() {
+    var sTCvalue;
+    var iIndex;
+    var TC = new Array();
+    TC[2] = new Object();
+    <!--#include virtual="CC.txt"-->
+    for (var i = 0; i <= 9; i++) {
+        divElement = "Div"+ i;
+        iIndex = Math.pow(2,i);
+        sTCvalue = document.getElementById(divElement).firstChild.nodeValue; 
+        //alert(sTCvalue);
+        if(sTCvalue != ".") {
+            var sCCtext = " (" + TC[2][iIndex] + ") ";
+            var sCC = document.createTextNode(sCCtext);
+            document.getElementById(divElement).appendChild(sCC);
+        }
+    }
+    var sLegend = "Legend: THx-Top Housing, BHx-Bottom Housing, SH1-Security, LSH-L Shu Box, KBx-Keyboard";
+    //var sLegendNode = document.createTextNode(sLegend);
+    //document.getElementById("Legend").appendChild(sLegendNode);
+    document.all.Legend.innerHTML = sLegend;
+}
+
+
+// 2012-06-03
+function secureStatus() {
+    //alert(this.value);
+    var sSecureValue = document.all.iPWD.value;
+    //alert(sSecureValue);
+    if (sSecureValue == "0815") {
+        bSecure = true;
+        getContactCode();
+        bSecure = false;
+        //alert(sSecureValue);
+        document.all.iPWD.value = "";
+    }
+}
+
+// 2012-06-23
+function activateCodeEntry() {
+    //alert(document.all.iPWD.disabled);
+    document.all.iPWD.disabled = "";
+}
+
+

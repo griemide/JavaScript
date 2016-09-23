@@ -1,0 +1,7 @@
+﻿TC[2][1] = 'BH2'; // Bottom Housing 2
+TC[2][16] = 'TH1'; // Top Housing 1
+TC[2][32] = 'BH1'; // Bottom Housing 1
+TC[2][64] = 'LSB'; // L-Shu Box
+TC[2][128] = 'SH1, TH2'; // Security 1, Top Housing 2
+TC[2][256] = 'TH3'; // Top Housing 3
+TC[2][512] = 'TH4'; // Top Housing 4

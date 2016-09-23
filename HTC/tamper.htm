@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+(c)2012, Michael W. Gries
+creation date: 2012-05-28
+last modified: 2012-06-23
+//-->
+<html manifest="cache.manifest" />
+<head>
+    <title id="WebsiteTitle">H5000 Tamper</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../faviconPAYcol.ico" />
+    <link rel="apple-touch-icon-precomposed" href="../../VeriFone114x114.png" />
+    <link rel="apple-touch-startup-image" href="H5000_320x460.jpg" /> 
+    <link href="http://www.gries.name/Michael/home.css" rel="stylesheet" media="screen" type="text/css" />
+    <meta name="author" content="Michael Gries" />
+    <meta name="robots" content="noindex, nofollow" /> 
+    <meta http-equiv="expires" content="0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent black" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="H5000.shtm" type="text/javascript"> </script>
+</head>
+<body>
+    <input id="inputCode" type="text" name="Code" size="10" maxlength="10" value="0xb2000780"  
+           title="insert Double Word displayed by Diag SW" style="font-family:Courier,monospace" />
+    <button id="getDecode" type="submit" name="Enter" value="0xb2000780" title="press to submit" 
+            onclick="javascript:getTamperCode()">get Tamper Code
+    </button>
+
+    <h3  id="Encode" title="BBL_tamper_Enc_Src"></h3>
+    <div id="EncHex" title="5 bit coding" style="font-family:Courier,monospace" ></div>
+
+    <h3  id="Decode" title="BBL_Tamper_Status"></h3>
+    <div id="Div0"  title="[0]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div1"  title="[1]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div2"  title="[2]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div3"  title="[3]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div4"  title="[4]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div5"  title="[5]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div6"  title="[6]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div7"  title="[7]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div8"  title="[8]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div9"  title="[9]"  style="font-family:Courier,monospace" ></div>
+    <div id="Div10" title="[10]" style="font-family:Courier,monospace" ></div>
+    <div id="Div11" title="[11]" style="font-family:Courier,monospace" ></div>
+    <div id="Div12" title="[12]" style="font-family:Courier,monospace" ></div>
+    <div id="Div13" title="[13]" style="font-family:Courier,monospace" ></div>
+    <div id="Div14" title="[14]" style="font-family:Courier,monospace" ></div>
+    <div id="Div15" title="[15]" style="font-family:Courier,monospace" ></div>
+    <div id="Div16" title="[16]" style="font-family:Courier,monospace" ></div>
+    <div id="Div17" title="[17]" style="font-family:Courier,monospace" ></div>
+    <div id="Div18" title="[18]" style="font-family:Courier,monospace" ></div>
+    <div id="Div19" title="[19]" style="font-family:Courier,monospace" ></div>
+    <div id="Div20" title="[20]" style="font-family:Courier,monospace" ></div>
+    <div id="Div21" title="[21]" style="font-family:Courier,monospace" ></div>
+    <div id="Div22" title="[22]" style="font-family:Courier,monospace" ></div>
+
+    <h3  id="H1" title="Clear"></h3>
+    <button id="clsTamper" type="reset" name="Clear"  title="press to clear screen" 
+            onclick="javascript:clearTamperCode()">Clear
+    </button>
+    <input id="iPWD" name="PWD" type="password" size="4" maxlength="128" 
+           value="" onkeyup="javascript:secureStatus()" disabled="disabled" />
+    <div id="Legend" title="Rev.A00" style="font-family:Arial; font-size: xx-small; color: #808080;" > </div>
+    <div id="Copyright" >
+        <span title="Last modified 2012-06-03" >&copy 2011 - 2012, </span>
+        <span title="Phone +49 6621 84 691" >Michael Gries, </span>
+        <span title="Michael.Gries@VeriFone.com" >VFI</span>
+    </div>
+</body>
+</html>
