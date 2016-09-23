@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+(c)2014, Michael W. Gries
+creation date: 2014-05-31
+last modified: 2014-06-01
+//-->
+<html>
+<head>
+    <meta name="robots" content="noindex, nofollow" /> 
+    <link href="http://www.gries.name/projekte/googlePrettify/prettify.css" type="text/css" rel="stylesheet" >
+    <style type="text/css">                
+            li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 
+            { list-style-type: decimal !important } 
+    </style>
+    <script src="http://www.gries.name/projekte/googlePrettify/run_prettify.js"></script>
+    <script src="http://www.gries.name/projekte/googlePrettify/prettify.js" type="text/javascript"></script>
+    <script src="http://www.gries.name/projekte/googlePrettify/lang-css.js" type="text/javascript"></script>
+</head>
+<body onload="prettyPrint();">
+    <p ><a href=decoder.js>decoder.js</a>
+        - javascript code:<br></p>
+    <pre style="align:center; text-align:left; max-width:1000px" class="prettyprint linenums">
+<!--#include virtual="decoder.js" -->
+    </pre>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+(c)2014, Michael W. Gries
+creation date: 2014-05-31
+last modified: 2014-06-19
+//-->
+<html manifest="cache.manifest" />
+<head>
+    <title id="WebsiteTitle">VRC Datagram Decoder</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../faviconPAYcol.ico" />
+    <link rel="apple-touch-icon-precomposed" href="../../VeriFone114x114.png" />
+    <link rel="apple-touch-startup-image" href="H5000_320x460.jpg" /> 
+    <link href="http://www.gries.name/Michael/home.css" rel="stylesheet" media="screen" type="text/css" />
+    <meta name="author" content="Michael Gries" />
+    <meta name="robots" content="noindex, nofollow" /> 
+    <meta http-equiv="expires" content="0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent black" />
+    <script src="decode.js" type="text/javascript"> </script>
+    <script src="sprintf.js" type="text/javascript"> </script>
+    <link href="http://www.gries.name/projekte/googlePrettify/prettify.css" type="text/css" rel="stylesheet" >
+    <style type="text/css">                
+            li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 
+            { list-style-type: decimal !important } 
+    </style>
+    <script src="http://www.gries.name/projekte/googlePrettify/run_prettify.js"></script>
+    <script src="http://www.gries.name/projekte/googlePrettify/prettify.js" type="text/javascript"></script>
+    <script src="http://www.gries.name/projekte/googlePrettify/lang-css.js" type="text/javascript"></script>
+</head>
+<body onload="prettyPrint();">
+    <h2>Project VRC Decoder</h2>
+        <p >Wertet die aktuellen Betriebsdaten des Vaillant Reglers VRC 410 aus (VRC Monitoring)</p>
+    <h3>VRC Logfiles</h3>
+      <a id="log" title="Arduino Yun (SD card))" accesskey="1"
+           href="http://gries.spdns.de/sd/vrc/" target="_blank">
+           Logfiles (online)</a>  &nbsp;/&nbsp;
+      <a id="log" title="VRC logfiles (www.gries.name)" accesskey="1"
+           href="logfiles/" target="_blank">
+           Logfiles (offline)</a> &nbsp;/&nbsp;
+      <a id="log" title="VRC logfile (www.gries.name)" accesskey="1"
+           href="example/vrc_2014-05-30.txt" target="_blank">
+           Logfile (example)</a>
+    <h3>VRC Datagram Beispiele</h3>
+    <div id="form1">
+        <form name="form1" method="get" style="display:inline"  >
+            Datagram:
+            <select name="example" size="1" onMouseDown= "this.value='00 FF';" onchange="updateDatagram()" >    
+                <option value="06 02 00 03 EE 98 84 00 02 20 06 02 00 03 F2 84 9A 00 00 00 00 03 18 02 00 05 1F 05 0E 00 92 AA 00 86 00 03 32 00 02 8B 00 B6 0C 02 00 03 F1 01 8E 01 00 00 00 11 83 00 1F 06 00 00 00 08 68 84 00 01 23 ">Winterbetrieb</option>
+                <option value="06 02 00 03 EE 98 84 00 02 20 06 02 00 03 F2 84 9A 00 00 00 00 03 28 2B 0B 03 13 06 0E 00 92 AA 01 09 00 03 76 00 04 E8 00 61 0C 02 00 03 F1 00 A0 00 01 00 00 EF 83 00 1F 06 00 00 00 08 68 84 00 00 22 ">Sommerbetrieb</option>
+                <option value="06 02 00 03 EE 98 84 00 02 20 06 02 00 03 F2 84 9A 00 00 01 00 01 3B 00 02 05 11 05 0E 00 92 AA 00 79 00 03 68 00 03 50 00 8F 0C 02 00 03 F1 03 6E 00 00 00 00 C7 83 00 1F 06 00 00 00 08 68 84 00 01 23 ">Heizbetrieb</option>
+                <option value="06 02 00 03 EE 98 84 00 02 20 06 02 00 03 F2 84 9A 00 00 02 00 01 3B 00 02 05 11 05 0E 00 92 AA 00 79 00 03 68 00 03 50 00 8F 0C 02 00 03 F1 03 6E 00 00 00 00 C7 83 00 1F 06 00 00 00 08 68 84 00 01 23 ">Warmwasser</option>
+                <option value="06 02 00 03 EE 98 84 00 02 20 06 02 00 03 F2 84 9A 00 05 02 00 03 1C 23 11 04 14 06 0E 00 92 AA 00 FF 00 03 1F 00 04 C6 00 A3 0C 02 00 03 F1 00 A0 00 01 00 00 EF 83 00 1F 06 00 00 00 08 68 84 00 00 22 ">Wartung</option>
+            </select>
+        </form>
+    </div><!--Ende #form1-->
+    <h3>Datagram Decoder</h3>
+    <textarea id="inputText" name="Datagram"  maxlength="205" cols="78" rows="3" onfocus="this.select()"    
+           title="insert datagram string copied from VRC logfile" style="font-family:Courier,monospace; font-size:small;" 
+    />06 02 00 03 EE 98 84 00 02 20 06 02 00 03 F2 84 9A 00 00 00 00 03 18 02 00 05 1F 05 0E 00 92 AA 00 86 00 03 32 00 02 8B 00 B6 0C 02 00 03 F1 01 8E 01 00 00 00 11 83 00 1F 06 00 00 00 08 68 84 00 01 23 </textarea>  
+    <!--
+    <br />
+    <input id="inputCode" type="text" name="Code" size="200" maxlength="205"  
+           value="06 02 00 03 EE 98 84 00 02 20 06 02 00 03 F2 84 9A 00 00 00 00 03 18 02 00 05 1F 05 0E 00 92 AA 00 86 00 03 32 00 02 8B 00 B6 0C 02 00 03 F1 01 8E 01 00 00 00 11 83 00 1F 06 00 00 00 08 68 84 00 01 23 "
+           title="insert datagram string copied from VRC logfile" style="font-family:Courier,monospace; font-size:x-large;" />
+    //-->
+    <br />
+    <button id="clearCode" type="reset" name="Clear"  title="press to clear screen"
+            onclick="javascript:clearCode()">&nbsp;Clear Input Field&nbsp;
+    </button> &nbsp;&nbsp;&nbsp;
+    <button id="getDecode" type="submit" name="Enter" value="0xb2000780" title="press to submit" 
+            onclick="javascript:startDecoding()">Decode Datagram
+    </button>
+    <br />
+    <br />
+    <textarea id="statusText" name="Status"  maxlength="78" cols="78" rows="1"  contenteditable="false"  readonly="readonly"
+           title="shows current status of datagram decoder" style="font-family:Courier,monospace; font-size:small;"
+    />Status: Valid datagram in Input Field detected</textarea>
+    <br />
+    <input id="iPWD" name="PWD" type="password" size="5" maxlength="128"
+           value="" onkeyup="javascript:secureStatus()" disabled="disabled"  />
+
+    <h3  id="Decode" title="VRC Monitor Daten" style="visibility: hidden;">Decoded Datagram</h3>
+    <div id="DecodeBlock" style="align:center; border: solid none lightgrey; text-align:left; max-width:620px;" >
+        <div id="Header" title="Bezeichnung" style="font-family:Courier,monospace; font-weight: bold; visibility: hidden;">Bemerkung</div>
+        <div id="Div0"  title="[0]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div1"  title="[1]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div2"  title="[2]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div3"  title="[3]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div4"  title="[4]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div5"  title="[5]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div6"  title="[6]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div7"  title="[7]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div8"  title="[8]"  style="font-family:Courier,monospace" ></div>
+        <div id="Div9"  title="[9]"  style="font-family:Courier,monospace" ></div>
+    </div><!--Ende #DecodeBlock-->
+
+    <form id="smsForm" action="https://rest.nexmo.com/sms/json" method="get" target="_blank">
+        <input id="smsAPIk" type="hidden"   name="api_key" value="17658d32">
+        <input id="smsAPIs" type="hidden"   name="api_secret" value="6a75a7ad">
+        <input id="smsFROM" type="hidden"   name="from" value="VRC Decoder">
+        <input id="smsTO"   type="hidden"   name="to" value="00491754193945">
+        <input id="smsTEXT" type="text"     name="text" SIZE="60" value="not supported yet" style="font-family:Courier,monospace; font-size:small;" >
+        <input id="smsOK"   type="submit"   name="Button" value="send SMS" disabled >
+        <input id="smsPWD"  type="password" name="PWD"  size="5" maxlength="128" value="" onkeyup="javascript:secureSMS()" disabled="disabled" >
+    </form>
+
+    <div id="Legend" title="Rev.A00" style="font-family:Arial; font-size: xx-small; color: #808080;" > </div>
+
+    <div id="Copyright" >
+        <span title="Last modified 2014-06-19" >&copy; 2014, </span>
+        <span title="Phone +49 5661 71 1642" >Michael Gries, </span>
+        <span title="michael.gries@bbraun.com" >B.Braun</span>
+    </div>
+
+    <h3  id="Tools" title="References" style="visibility: hidden;">Tools</h3>
+        <a id="RefJS" title="Javascript Reference" accesskey="J" style="visibility: hidden;" target="_blank"
+           href="http://www.w3schools.com/jsref/default.asp" >
+           w3schools - Javascript Reference</a>
+    <br />
+
+    <center id="javascript"  style="visibility: hidden;" >
+    <p ><a href=decoder.js>decoder.js</a>
+        - javascript code:<br></p>
+    <pre style="align:center; text-align:left; max-width:1000px;" class="prettyprint linenums">
+<!--#include virtual="decoder.js" -->
+    </pre>
+    </center>
+
+</body>
+</html>
