@@ -1,9 +1,28 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
-    <head>
-        <title>DLS Auftragsdaten CSV</title>
-    </head>
-    <body>
+<!--
+(c)2016, Michael W. Gries
+creation date: 2016-09-22
+last modified: 2016-09-23
+//-->
+<html manifest="cache.manifest" />
+<head>
+    <title id="WebsiteTitle">DLS Auftragsdaten CSV</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../faviconPAYcol.ico" />
+    <link rel="apple-touch-icon-precomposed" href="../../VeriFone114x114.png" />
+    <link rel="apple-touch-startup-image" href="H5000_320x460.jpg" /> 
+    <link href="http://www.gries.name/Michael/home.css" rel="stylesheet" media="screen" type="text/css" />
+    <meta name="author" content="Michael Gries" />
+    <meta name="robots" content="noindex, nofollow" /> 
+    <meta http-equiv="expires" content="0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent black" />
+    <script src="decoder.js" type="text/javascript"> </script>
+    <script src="sprintf.js" type="text/javascript"> </script>
+</head>
+<body>
+    <h2>Project DLC Decoder</h2>
+        <p >DLS Auftragsdaten (CSV-Datei)</p>
+    <h3>Auftragsdaten anzeigen (Auswahl CSV-Datei)</h3>
     <input type="file" name="file" id="file">
     <script type="text/javascript">
         document.getElementById('file').onchange = function(){
@@ -45,6 +64,9 @@
 					"\n22", "                        :", tabs[21],
 					"\n23", "                        :", tabs[22]
 					);
+					show_elements();
+					document.getElementById("Div0").style.visibility='visible';
+					document.getElementById("Div0").innerHTML = tabs[0];
                     //line01.push(tabs[0]);
                     //line02.push(tabs[1]);
                     //line03.push(tabs[2]);
@@ -58,6 +80,38 @@
             reader.readAsText(file);
         };
     </script>
-    </body>
+
+    <h3  id="Decode" title="DLC Auftragsdaten" >Decoded Datagram</h3>
+    <div id="DecodeBlock" style="align:center; border: solid none lightgrey; text-align:left; max-width:620px;" >
+        <div id="Header" title="Bezeichnung" style="font-family:Courier,monospace; font-weight: bold; ">decodeDatagram</div>
+        <div id="Div0"  title="[0]"  style="font-family:Courier,monospace" >test</div>
+        <div id="Div1"  title="[1]"  style="font-family:Courier,monospace" >1</div>
+        <div id="Div2"  title="[2]"  style="font-family:Courier,monospace" >2</div>
+        <div id="Div3"  title="[3]"  style="font-family:Courier,monospace" >3</div>
+        <div id="Div4"  title="[4]"  style="font-family:Courier,monospace" >4</div>
+        <div id="Div5"  title="[5]"  style="font-family:Courier,monospace" >5</div>
+        <div id="Div6"  title="[6]"  style="font-family:Courier,monospace" >6</div>
+        <div id="Div7"  title="[7]"  style="font-family:Courier,monospace" >7</div>
+        <div id="Div8"  title="[8]"  style="font-family:Courier,monospace" >8</div>
+        <div id="Div9"  title="[9]"  style="font-family:Courier,monospace" >9</div>
+    </div><!--Ende #DecodeBlock-->
+
+
+    <div id="Legend" title="Rev.A00" style="font-family:Arial; font-size: xx-small; color: #808080;" > </div>
+
+    <div id="Copyright" >
+        <span title="Last modified 2016-09-23" >&copy; 2016, </span>
+        <span title="4-2-2 (griemide)" >Michael Gries, </span>
+        <span title="Phone +49 5661 71 1642" >-1642, </span>
+        <span title="michael.gries@bbraun.com" >B.Braun Melsungen AG</span>
+    </div>
+
+    <h3  id="Tools" title="References" style="visibility: hidden;">Tools</h3>
+        <a id="RefJS" title="Javascript Reference" accesskey="J" style="visibility: hidden;" target="_blank"
+           href="http://www.w3schools.com/jsref/default.asp" >
+           w3schools - Javascript Reference</a>
+    <br />
+
+
+</body>
 </html>
- 
