@@ -25,6 +25,7 @@ last modified: 2016-09-23
     <h3>Auftragsdaten anzeigen (Auswahl CSV-Datei)</h3>
     <input type="file" name="file" id="file">
     <script type="text/javascript">
+		var tabs;
         document.getElementById('file').onchange = function(){
             var file = this.files[0];
             var reader = new FileReader();
@@ -36,9 +37,9 @@ last modified: 2016-09-23
                 var line02 = [];
                 var line03 = [];
                 // assuming 3 lines
-                var lines = this.result.split('\n');
-                lines.map(function(item){
-                    var tabs = item.split('\t');
+                //var lines = this.result.split('\n');
+                //lines.map(function(item){
+                    tabs = this.result.split('\t');
                     console.log(
 					"\n 1", "OrderNo                 :", tabs[0], 
 					"\n 2", "Factory                 :", tabs[1],
@@ -64,14 +65,36 @@ last modified: 2016-09-23
 					"\n22", "                        :", tabs[21],
 					"\n23", "                        :", tabs[22]
 					);
-					show_elements();
-					document.getElementById("Div0").style.visibility='visible';
-					document.getElementById("Div0").innerHTML = tabs[0];
+					//show_elements();
+					//document.getElementById("Div0").style.visibility='visible';
+					document.getElementById("Div00").innerHTML = "OrderNo                 :" + tabs[0];
+					document.getElementById("Div01").innerHTML = "Factory                 :" + tabs[1];
+					document.getElementById("Div02").innerHTML = "MaterialNo              :" + tabs[2];
+					document.getElementById("Div03").innerHTML = "MaterialText            :" + tabs[3];
+					document.getElementById("Div04").innerHTML = "TotalCount              :" + tabs[4];
+					document.getElementById("Div05").innerHTML = "Version                 :" + tabs[5];
+					document.getElementById("Div06").innerHTML = "Lot                     :" + tabs[6];
+					document.getElementById("Div07").innerHTML = "CustomerLot             :" + tabs[7];
+					document.getElementById("Div08").innerHTML = "FormatManufacturingDate :" + tabs[8];
+					document.getElementById("Div09").innerHTML = "FormatExpiryDate        :" + tabs[9];
+					document.getElementById("Div10").innerHTML = "LabelsPerReel           :" + tabs[10];
+					document.getElementById("Div11").innerHTML = "RawMaterial             :" + tabs[11];
+					document.getElementById("Div12").innerHTML = "LabelType               :" + tabs[12];
+					document.getElementById("Div13").innerHTML = "Pharmacode              :" + tabs[13];
+					document.getElementById("Div14").innerHTML = "EANCode                 :" + tabs[14];
+					document.getElementById("Div15").innerHTML = "DataMatrixPrint         :" + tabs[15];
+					document.getElementById("Div16").innerHTML = "ManufacturingDate       :" + tabs[16];
+					document.getElementById("Div17").innerHTML = "ExpiryDate              :" + tabs[17];
+					document.getElementById("Div18").innerHTML = "PackingOrder            :" + tabs[18];
+					document.getElementById("Div19").innerHTML = "RegulatoryUnit          :" + tabs[19];
+					document.getElementById("Div20").innerHTML = "TrackAndTraceRelevance  :" + tabs[20];
+					document.getElementById("Div21").innerHTML = "                        :" + tabs[21];
+					document.getElementById("Div22").innerHTML = "                        :" + tabs[22];
                     //line01.push(tabs[0]);
                     //line02.push(tabs[1]);
                     //line03.push(tabs[2]);
-                    }
-                );
+                    //}
+                //);
                 // test two of the arrays after reading:
                 // for (var i = 0; i < 3; i++) {
                 //    console.log(line01[i], line02[i]);
@@ -83,17 +106,30 @@ last modified: 2016-09-23
 
     <h3  id="Decode" title="DLC Auftragsdaten" >Decoded Datagram</h3>
     <div id="DecodeBlock" style="align:center; border: solid none lightgrey; text-align:left; max-width:620px;" >
-        <div id="Header" title="Bezeichnung" style="font-family:Courier,monospace; font-weight: bold; ">decodeDatagram</div>
-        <div id="Div0"  title="[0]"  style="font-family:Courier,monospace" >test</div>
-        <div id="Div1"  title="[1]"  style="font-family:Courier,monospace" >1</div>
-        <div id="Div2"  title="[2]"  style="font-family:Courier,monospace" >2</div>
-        <div id="Div3"  title="[3]"  style="font-family:Courier,monospace" >3</div>
-        <div id="Div4"  title="[4]"  style="font-family:Courier,monospace" >4</div>
-        <div id="Div5"  title="[5]"  style="font-family:Courier,monospace" >5</div>
-        <div id="Div6"  title="[6]"  style="font-family:Courier,monospace" >6</div>
-        <div id="Div7"  title="[7]"  style="font-family:Courier,monospace" >7</div>
-        <div id="Div8"  title="[8]"  style="font-family:Courier,monospace" >8</div>
-        <div id="Div9"  title="[9]"  style="font-family:Courier,monospace" >9</div>
+        <div id="Header" title="Bezeichnung" style="font-family:Courier,monospace; font-weight: bold; "> #  Symbol                 : Definition</div>
+        <div id="Div00"  title="[0]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div01"  title="[1]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div02"  title="[2]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div03"  title="[3]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div04"  title="[4]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div05"  title="[5]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div06"  title="[6]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div07"  title="[7]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div08"  title="[8]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div09"  title="[9]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div10"  title="[10]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div11"  title="[11]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div12"  title="[12]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div13"  title="[13]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div14"  title="[14]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div15"  title="[15]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div16"  title="[16]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div17"  title="[17]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div18"  title="[18]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div19"  title="[19]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div20"  title="[20]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div21"  title="[21]"  style="font-family:Courier,monospace" >...</div>
+        <div id="Div22"  title="[22]"  style="font-family:Courier,monospace" >...</div>
     </div><!--Ende #DecodeBlock-->
 
 
