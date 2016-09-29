@@ -1,0 +1,23 @@
+OrderNo	1,AUFNR,CHAR12,PRAUF-Nr. für das Etikett,VARCHAR,^[0-9]+$ 
+Factory	2,WERKS,CHAR4,Produktionswerk,VARCHAR,^DE13|DE09|DE19|DE53$ 
+MaterialNo	3,MATNR,CHAR18,Materialnummer Etikett,VARCHAR,^.+$ 
+MaterialText	4,MATXT,CHAR40,Materialtext Etikett,VARCHAR,^.*$ 
+TotalCount	5,MENG13,CHAR13,Menge Etiketten,INTEGER,^[0-9]+$ 
+Version	6,ZZDRUCKSTAND,CHAR4,Druckstand,VARCHAR,^.+$ 
+Lot	7,CHARG,CHAR10,Chargennummer,VARCHAR,^.*$ 
+CustomerLot	8,CHARGENNUMMER_KUNDE,CHAR20,Kundencharge,VARCHAR,^.*$ 
+FormatManufacturingDate	9,FORMAT_HERSTELLDATUM,CHA10,Herstelldatum,VARCHAR,^.*$ 
+FormatExpiryDate	10,FORMAT_VERFALLSDATUM,CHAR10,Verfalldatum,VARCHAR,^.*$ 
+LabelsPerReel	11,MENG13,CHAR13,Anzahl Etiketten pro Rolle,INTEGER,^.*$ 
+RawMaterial	12,MATNR,CHAR18,Materialnummer Rohetikett,VARCHAR,^.+$ 
+LabelType	13,SOBSL,CHAR2,Druckausprägung,VARCHAR,^.+$ 
+Pharmacode	14,BBM_PHARMA_CODE,CHAR4,Pharma- /Laetuscode,VARCHAR,^.*$ 
+EANCode	15,EAN11,CHAR18,EAN-Nr. Etikett,VARCHAR,^.*$ 
+DataMatrixPrint	16,DM,CHAR1,Ausprägung Data Matrix,INTEGER,^.*$ 
+ManufacturingDate	17,HSDAT,CHAR8,Herstelldatum für DM,VARCHAR,^.*$ 
+ExpiryDate	18,VFDAT,CHAR8,Verfalldatum Für DM,VARCHAR,^.*$ 
+PackingOrder	19,ZZ_LINKORD,CHAR12,PRAUF-Nr. für Verpackung,VARCHAR,^.*$ 
+RegUnit	20,Reg_Meng,CHAR2,Regulatorische Mengeneinheit,VARCHAR,.* 
+TTCharCT	21,TnT_Auspr,CHAR1,Track and Trace Auspraegung,VARCHAR,.* 
+AI_NHRN	22,AI_for_NHRN,CHAR3,ApplicationIdentifier for NHRN,VARCHAR,.* 
+NHRN	23,NHRN,CHAR16,National Healthcare Reimbursement Number,VARCHAR,.* 
