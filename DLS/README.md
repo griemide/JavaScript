@@ -1,5 +1,9 @@
 # DLS Auftragsdaten 
 
+Die Javascript Anwendung dls.html kann nicht auf Netzlaufwerken ausgeführt werden, bei denen Active-X Steuerelemente deaktiviert sind.
+
+D.h. dls.html auf lokaler Festplatte starten und Meldung 'Geblocke Inhalte zulassen' mit 'Ja' bestätigen. Dann zum Dekodieren des Inhaltes entsprechende CSV-Datei auswählen.  
+
 ## CSV-Datei Decodierung
 
 
