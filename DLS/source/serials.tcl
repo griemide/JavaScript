@@ -86,7 +86,58 @@ proc ::Serials::Init {} \
 
    set workbase $::options(WorkFolder)
 
+   # init serials database folder
+
+
+   set ::options(SerialsFolder)           [GetConfig SerialsFolder            [GetOption SerialsFolder         ""]]
    set ::options(SerialsImportFolder)     [GetConfig SerialsImportFolder      [GetOption SerialsImportFolder   ""]]
+
+   set ::options(SupportSerials)          [string equal -nocase [string trim [GetConfig SupportSerials           [GetOption SupportSerials       "no" ]]]    "yes"]
+   set ::options(SupportSerialsImport)    [string equal -nocase [string trim [GetConfig SupportSerialsImport     [GetOption SupportSerialsImport "no" ]]]    "yes"]
+
+   set ::options(SupportSerialsGenerator) [string equal -nocase [string trim [GetConfig SupportSerialsGenerator  [GetOption SupportSerialsGenerator "no" ]]] "yes"]
+
+   if {$::options(SupportSerials)} \
+   {
+      if {[string equal $::options(SerialsFolder) ""]} \
+      {
+         # no folder config
+         ErrorAckDialog [subst $::txt(dlg_NoSerialsFolderGiven)]
+         exit 1
+      } \
+      else \
+      {
+         set serialsfolder [file join $::options(SerialsFolder)]
+         if { ! [file exists $serialsfolder]} \
+         {
+            # folder missing
+            ErrorAckDialog [subst $::txt(dlg_NoSerialsFolder)]
+            exit 1
+         }
+      }
+   }
+
+
+   if {$::options(SupportSerialsImport)} \
+   {
+      if {[string equal $::options(SerialsImportFolder) ""]} \
+      {
+         # no folder config
+         ErrorAckDialog [subst $::txt(dlg_NoSerialsImportFolderGiven)]
+         exit 1
+      } \
+      else \
+      {
+         set serialsimportfolder [file join $::options(SerialsImportFolder)]
+         if { ! [file exists $serialsimportfolder]} \
+         {
+            # folder missing
+            ErrorAckDialog [subst $::txt(dlg_NoSerialsImportFolder)]
+            exit 1
+         }
+      }
+   }
+
 
    set ::options(ComponentResults) [list "S1" CAPS "S2" HMI "S3" Camera1 "S4" Camera2 "S5" Codereader1]
 
@@ -629,7 +680,7 @@ proc ::Serials::GenerateReelTickets {jobid} {
          set remainingLabels   $totalLabels
 
          while {$remainingLabels > 0} {
-            if {$remainingLabels >= $numbersPerReel} {
+            if {$remainingLabels >= $labelsPerReel} {
                # build for one full reel
 
                set reelamount [expr {$labelsPerReel + $extraPerReel}]
@@ -674,7 +725,7 @@ proc ::Serials::GenerateReelTickets {jobid} {
          set remainingLabels   $numberOfNumbers
          
          while {$remainingLabels > 0} {
-            if {$remainingLabels >= $numbersPerReel} {
+            if {$remainingLabels >= $labelsPerReel} {
                # build for one full reel
 
                set reelamount $labelsPerReel
@@ -882,7 +933,7 @@ proc ::Serials::GenerateSerialFiles {jobid kind interactive} {
                UserMonolog_Show $mono [subst $::txt(dlg_BuildingOneMaskFile)]
             }
 
-            if {$remainingLabels >= $numbersPerReel} {
+            if {$remainingLabels >= $labelsPerReel} {
                # build for one full reel
 
                set reelamount [expr {$labelsPerReel + $extraPerReel}]
@@ -932,7 +983,7 @@ proc ::Serials::GenerateSerialFiles {jobid kind interactive} {
          set remainingLabels   $numberOfNumbers
          
          while {$remainingLabels > 0} {
-            if {$remainingLabels >= $numbersPerReel} {
+            if {$remainingLabels >= $labelsPerReel} {
                # build for one full reel
 
                set reelamount $labelsPerReel
@@ -941,6 +992,7 @@ proc ::Serials::GenerateSerialFiles {jobid kind interactive} {
                   # add extra margin for first reel
                   set reelamount [expr {$reelamount + $extraFirstReel}]
                }
+
                
                ::Serials::WriteSerialsFile  $jobid $sub $labelsPerReel $reelamount $maskHeadline $maskLineTemplate $haveVarFile
 #               ::Serials::WriteReelTicket   $jobid $sub $labelsPerReel $reelamount $maskHeadline $maskLineTemplate $haveVarFile
@@ -979,6 +1031,7 @@ proc ::Serials::GenerateSerialFiles {jobid kind interactive} {
       if {[file exists $firstsub]} {
          file copy $firstsub $jobmask
       }
+      
 
       # memorize number of sub jobs with own sub-job-ticket
       set numberOfSubJobs $numberOfReels
@@ -1031,8 +1084,7 @@ proc ::Serials::WriteSerialsFile {jobid  sub \
       return 0 ;# nothing to do
    }
 
-   if {[catch {::Serials::WriteMaskFile $jobid $sub $numbersPerReel $maskHeadline $maskLineTemplate} errmsg ]} \
-   {
+   if {[catch {::Serials::WriteMaskFile $jobid $sub $numbersPerReel $maskHeadline $maskLineTemplate} errmsg ]} {
       ERROR $errmsg
       ErrorAckDialog $errmsg
       return 1
@@ -1156,7 +1208,7 @@ proc ::Serials::WriteMaskFile {jobid sub needed \
 
 
 
-#**********************************************************************
+#********************************************************************
 ##
 # Generate a list of sequential serial numbers
 #
