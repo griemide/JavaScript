@@ -6,7 +6,7 @@ D.h. dls.html auf lokaler Festplatte starten und Meldung 'Geblocke Inhalte zulas
 
 ## Aktualisierung
 Erweiterung 2019-11-26 im Rahmen von Change 1576 (Track and Trace Russland)  
-Datei [dls_CHC-1576.html](dls_CHC-1576.html)
+Script-Datei [dls_CHC-1576.html](dls_CHC-1576.html) - verwendete CSV-Datei [CHC1576_12606156_0116.csv](CHC1576_12606156_0116.csv)
 
 ### CSV-Datei Decodierung
 
