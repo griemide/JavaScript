@@ -4,7 +4,10 @@ Die Javascript Anwendung dls.html kann nicht auf Netzlaufwerken ausgeführt werd
 
 D.h. dls.html auf lokaler Festplatte starten und Meldung 'Geblocke Inhalte zulassen' mit 'Ja' bestätigen. Dann zum Dekodieren des Inhaltes entsprechende CSV-Datei auswählen.  
 
-## CSV-Datei Decodierung
+## Aktualisierung
+Erweiterung im Rahmen von Change 157 (TundT Russland)
+
+### CSV-Datei Decodierung
 
 
 | Spalte | Symbol                  | Definition
@@ -29,4 +32,8 @@ D.h. dls.html auf lokaler Festplatte starten und Meldung 'Geblocke Inhalte zulas
 |18      | ExpiryDate              | VFDAT,CHAR8,VerfalldatumFür DM,VARCHAR,^.*$
 |19      | PackingOrder            | ZZ_LINKORD,CHAR12,PRAUF-Nr. für Verpackung,VARCHAR,^.*$
 |20      | RegulatoryUnit          | REGUNIT,CHAR4,Regulatorische Mengeneinheit,VARCHAR,^10|20|30|40|50|na$
-|21      | TrackAndTraceRelevance  | xxxx,CHAR4,Track and Trace Relevanz,VARCHAR,^[0-3]{1}$
+|21      | TrackAndTraceRelevance  | xxxx,CHAR4,Track and Trace Relevanz,VARCHAR,^[0-3]{1}$  
+|22      | Res1                    | ???  
+|23      | Res2                    | ???  
+|24      | Res3                    | ???    
+|25      | Res4                    | ???  
