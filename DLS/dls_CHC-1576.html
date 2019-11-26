@@ -15,13 +15,16 @@ last modified: 2019-11-26 (also update Copyright comment at EOF)
 <body>
     <h3>Druckzentrum - Druckleitsystem DLS</h2>
         <p >Dekodierung der DLS Auftragsdatendatei (CSV-Datei)</p>
+        <p >Hinweis: Werte sind durch Tabulator getrennt (TSV)</p>
     <div>Auftragsdaten anzeigen (Auswahl der CSV-Datei):</div>
     <input type="file" name="file" id="file" size="150">
     <br>
     <output id="list">...</output>
     <br>
     <div id="DecodeBlock" >
-        <div id="Header" title="Column" style="font-family:Courier,monospace; font-weight: bold; ">&nbsp;#&ensp;Symbol&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: Value</div>
+        <div id="Header" title="Column" style="font-family:Courier,monospace; font-weight: bold; ">
+              &nbsp;#&ensp;Symbol&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: Value
+        </div>
         <pre id="Div00"  title="[1]"    style="font-family:Courier,monospace" >...</pre>
         <pre id="Div01"  title="[2]"    style="font-family:Courier,monospace" >...</pre>
         <pre id="Div02"  title="[3]"    style="font-family:Courier,monospace" >...</pre>
@@ -47,7 +50,9 @@ last modified: 2019-11-26 (also update Copyright comment at EOF)
         <pre id="Div22"  title="[23]"   style="font-family:Courier,monospace" >...</pre>
         <pre id="Div23"  title="[24]"   style="font-family:Courier,monospace" >...</pre>
         <pre id="Div24"  title="[25]"   style="font-family:Courier,monospace" >...</pre>
-        <div id="Footer" title="Footnote" style="font-family:Courier,monospace; font-weight: bold; "> EOF<br><br></div>
+        <div id="Footer" title="EOF"    style="font-family:Courier,monospace; 
+             font-weight: bold; "> EOF<br><br>
+        </div>
     </div><!--Ende #DecodeBlock-->
     
     <div id="Copyright" 
@@ -55,7 +60,7 @@ last modified: 2019-11-26 (also update Copyright comment at EOF)
                 font-family: Arial; font-size: small; ">         
         <span title="Filename" >dls_CHC-1576.html  </span>
         <span title="Creation date 2016-09-22" >&copy; </span>
-        <span title="Last modified 2016-09-29" >2016-2019, </span>
+        <span title="Last modified 2019-11-26" >2016-2019, </span>
         <span title="4-2-2 (griemide)" >Michael Gries, </span>
         <span title="Phone +49 5661 71 1642" >-1642, </span>
         <span title="michael.gries@bbraun.com" >B.Braun Melsungen AG</span>
