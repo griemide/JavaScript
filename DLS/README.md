@@ -34,7 +34,7 @@ Script-Datei [dls_CHC-1576.html](dls_CHC-1576.html) - verwendete CSV-Datei [CHC1
 |19      | PackingOrder            | ZZ_LINKORD,CHAR12,PRAUF-Nr. für Verpackung,VARCHAR,^.*$
 |20      | RegulatoryUnit          | REGUNIT,CHAR4,Regulatorische Mengeneinheit,VARCHAR,^10|20|30|40|50|na$
 |21      | TrackAndTraceRelevance  | xxxx,CHAR4,Track and Trace Relevanz,VARCHAR,^[0-3]{1}$  
-|22      | Res1                    | ???  
-|23      | Res2                    | ???  
-|24      | Res3                    | ???    
-|25      | Res4                    | ???  
+|22      | AI_NHRN                 | ???  
+|23      | NHRN                    | ???  
+|24      | AlternativeRawMaterial  | ???    
+|25      | LayoutRotation          | ???  
