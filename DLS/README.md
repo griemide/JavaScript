@@ -33,7 +33,7 @@ Script-Datei [dls_CHC-1576.html](dls_CHC-1576.html) - verwendete CSV-Datei [CHC1
 |18      | ExpiryDateCode          | VFDAT,CHAR8,VerfalldatumFür DM,VARCHAR,^.*$
 |19      | PackingOrder            | ZZ_LINKORD,CHAR12,PRAUF-Nr. für Verpackung,VARCHAR,^.*$
 |20      | RegulatoryUnit          | REGUNIT,CHAR4,Regulatorische Mengeneinheit,VARCHAR,^10|20|30|40|50|na$
-|21      | TnT_Relevance           | xxxx,CHAR4,Track and Trace Relevanz,VARCHAR,^[0-3]{1}$  
+|21      | TnT_Relevance           | TnT_Auspr,CHAR1,21. TnT-Relevance,VARCHAR,^.*$  
 |22      | AI_NHRN                 | AI_for_NHRN,CHAR3,22. ApplicationIdentifier for NHRN,VARCHAR,^.*$
 |23      | NHRN                    | NHRN,CHAR16,23. National HealthcareReimbursement Number,VARCHAR,^.*$
 |24      | AlternativeRawMaterial  | AMATNR,CHAR18,24. AlternativeRawmaterial,VARCHAR,^.*$
