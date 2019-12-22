@@ -13,28 +13,28 @@ Script-Datei [dls_CHC-1576.html](dls_CHC-1576.html) - verwendete CSV-Datei [CHC1
 
 | Spalte | Symbol                  | Definition
 |--------|-------------------------|-------------------------------------------------------------
-| 1      | OrderNo                 | AUFNR,CHAR12,PRAUF-Nr. für dascEtikett,VARCHAR,^[0-9]+$
-| 2      | Factory                 | WERKS,CHAR4,Produktionswerk,VARCHAR,^DE13|DE09|DE53
-| 3      | MaterialNo              | MATNR,CHAR18,Materialnummer Etikett,VARCHAR,^.+$
+| 1      | PrintOrderNumber        | AUFNR,CHAR12,PRAUF-Nr. für dascEtikett,VARCHAR,^[0-9]+$
+| 2      | Plant                   | WERKS,CHAR4,Produktionswerk,VARCHAR,^DE13|DE09|DE53
+| 3      | MaterialNumber          | MATNR,CHAR18,Materialnummer Etikett,VARCHAR,^.+$
 | 4      | MaterialText            | MATXT,CHAR40,Materialtext Etikett,VARCHAR,^.*$
 | 5      | TotalCount              | MENG13,CHAR13,Menge Etiketten,INTEGER,^[0-9]+$
-| 6      | Version                 | ZZDRUCKSTAND,CHAR4,Druckstand,VARCHAR,^.+$
-| 7      | Lot                     | CHARG,CHAR10,Chargennummer,VARCHAR,^.*$
-| 8      | CustomerLot             | CHARGENNUMMER_KUNDE,CHAR20,Kundencharge,VARCHAR,^.*$
-| 9      | FormatManufacturingDate | FORMAT_HERSTELLDATUM,CHA10,Herstelldatum,VARCHAR,^.*$
-|10      | FormatExpiryDate        | FORMAT_VERFALLSDATUM,CHAR10,Verfalldatum,VARCHAR,^.*$
+| 6      | PrintStamp              | ZZDRUCKSTAND,CHAR4,Druckstand,VARCHAR,^.+$
+| 7      | Batch                   | CHARG,CHAR10,Chargennummer,VARCHAR,^.*$
+| 8      | CustomerBatch           | CHARGENNUMMER_KUNDE,CHAR20,Kundencharge,VARCHAR,^.*$
+| 9      | ManufacturingDate       | FORMAT_HERSTELLDATUM,CHA10,Herstelldatum,VARCHAR,^.*$
+|10      | ExpiryDate              | FORMAT_VERFALLSDATUM,CHAR10,Verfalldatum,VARCHAR,^.*$
 |11      | LabelsPerReel           | MENG13,CHAR13,Anzahl Etiketten pro Rolle,INTEGER,^.*$
 |12      | RawMaterial             | MATNR,CHAR18,Materialnummer Rohetikett,VARCHAR,^.+$
-|13      | LabelType               | SOBSL,CHAR2,Druckausprägung,VARCHAR,^.+$
+|13      | SpecialProcurementKey   | SOBSL,CHAR2,Druckausprägung,VARCHAR,^.+$
 |14      | Pharmacode              | BBM_PHARMA_CODE,CHAR4,Pharma-/Laetuscode,VARCHAR,^.*$
-|15      | EANCode                 | EAN11,CHAR18,EAN-Nr. Etikett,VARCHAR,^.*$
-|16      | DataMatrixPrint         | DM,CHAR1,Ausprägung Data Matrix,INTEGER,^.*$
-|17      | ManufacturingDate       | HSDAT,CHAR8,Herstelldatumfür DM,VARCHAR,^.*$
-|18      | ExpiryDate              | VFDAT,CHAR8,VerfalldatumFür DM,VARCHAR,^.*$
+|15      | GTIN_NTIN               | EAN11,CHAR18,EAN-Nr. Etikett,VARCHAR,^.*$
+|16      | DM_Line                 | DM,CHAR1,Ausprägung Data Matrix,INTEGER,^.*$
+|17      | ManufacturingDateCode   | HSDAT,CHAR8,Herstelldatumfür DM,VARCHAR,^.*$
+|18      | ExpiryDateCode          | VFDAT,CHAR8,VerfalldatumFür DM,VARCHAR,^.*$
 |19      | PackingOrder            | ZZ_LINKORD,CHAR12,PRAUF-Nr. für Verpackung,VARCHAR,^.*$
 |20      | RegulatoryUnit          | REGUNIT,CHAR4,Regulatorische Mengeneinheit,VARCHAR,^10|20|30|40|50|na$
-|21      | TrackAndTraceRelevance  | xxxx,CHAR4,Track and Trace Relevanz,VARCHAR,^[0-3]{1}$  
-|22      | AI_NHRN                 | ???  
-|23      | NHRN                    | ???  
-|24      | AlternativeRawMaterial  | ???    
-|25      | LayoutRotation          | ???  
+|21      | TnT_Relevance           | xxxx,CHAR4,Track and Trace Relevanz,VARCHAR,^[0-3]{1}$  
+|22      | AI_NHRN                 | AI_for_NHRN,CHAR3,22. ApplicationIdentifier for NHRN,VARCHAR,^.*$
+|23      | NHRN                    | NHRN,CHAR16,23. National HealthcareReimbursement Number,VARCHAR,^.*$
+|24      | AlternativeRawMaterial  | AMATNR,CHAR18,24. AlternativeRawmaterial,VARCHAR,^.*$
+|25      | LayoutRotation          | Rotation,CHAR3,25. Rotation,VARCHAR,^.*$
