@@ -5,8 +5,12 @@ Die Javascript Anwendung dls.html kann nicht auf Netzlaufwerken ausgeführt werd
 D.h. dls.html auf lokaler Festplatte starten und Meldung 'Geblocke Inhalte zulassen' mit 'Ja' bestätigen. Dann zum Dekodieren des Inhaltes entsprechende CSV-Datei auswählen.  
 
 ## Aktualisierung
-Erweiterung 2019-11-26 im Rahmen von Change 1576 (Track and Trace Russland)  
-Script-Datei [dls_CHC-1576.html](dls_CHC-1576.html) - verwendete CSV-Datei [CHC1576_12606156_0116.csv](CHC1576_12606156_0116.csv)
+Erweiterung 2019-11-26 im Rahmen vor FAT von Change 1576 (Track and Trace Russland)  
+Script-Datei [dls_CHC-1576.html](dls_CHC-1576.html) - verwendete CSV-Datei [CHC1576_12606156_0116.csv](CHC1576_12606156_0116.csv).
+
+Erweiterung 2019-12-18 im Rahmen nach FAT von Change 1576 (Track and Trace Russland)  
+Script-Datei [dls_CHC-1576_3.2.2.html](dls_CHC-1576_3.2.2.html) - verwendete CSV-Datei [CHC1576_12606156_0116.csv](CHC1576_12606156_0116.csv)
+
 
 ### CSV-Datei Decodierung
 
